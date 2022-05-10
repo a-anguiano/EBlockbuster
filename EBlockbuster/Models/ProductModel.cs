@@ -4,5 +4,6 @@ namespace EBlockbuster.Models
 {
     public class ProductModel
     {
+
     }
 }

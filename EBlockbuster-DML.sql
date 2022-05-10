@@ -1,27 +1,27 @@
-use EBlockbuster;
+use TestEBlockbuster;
 
   DELETE FROM ProductCustomer
 
   DELETE FROM Customer
-  DBCC CHECKIDENT ('EBlockbuster.dbo.Customer', RESEED, 0)
+  DBCC CHECKIDENT ('TestEBlockbuster.dbo.Customer', RESEED, 0)
 
   DELETE FROM Product
-  DBCC CHECKIDENT ('EBlockbuster.dbo.Product', RESEED, 0)
+  DBCC CHECKIDENT ('TestEBlockbuster.dbo.Product', RESEED, 0)
 
   DELETE FROM Administrator
-  DBCC CHECKIDENT ('EBlockbuster.dbo.Administrator', RESEED, 0)
+  DBCC CHECKIDENT ('TestEBlockbuster.dbo.Administrator', RESEED, 0)
 
   DELETE FROM Category
-  DBCC CHECKIDENT ('EBlockbuster.dbo.Category', RESEED, 0)
+  DBCC CHECKIDENT ('TestEBlockbuster.dbo.Category', RESEED, 0)
 
   DELETE FROM [Login]
-  DBCC CHECKIDENT ('EBlockbuster.dbo.Login', RESEED, 0)
+  DBCC CHECKIDENT ('TestEBlockbuster.dbo.Login', RESEED, 0)
 
   DELETE FROM CreditCard
-  DBCC CHECKIDENT ('EBlockbuster.dbo.CreditCard', RESEED, 0)
+  DBCC CHECKIDENT ('TestEBlockbuster.dbo.CreditCard', RESEED, 0)
 
   DELETE FROM SecurityLevel
-  DBCC CHECKIDENT ('EBlockbuster.dbo.SecurityLevel', RESEED, 0)
+  DBCC CHECKIDENT ('TestEBlockbuster.dbo.SecurityLevel', RESEED, 0)
 
 -- Login
 

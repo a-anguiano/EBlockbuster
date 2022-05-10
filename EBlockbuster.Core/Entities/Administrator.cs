@@ -10,5 +10,10 @@ namespace EBlockbuster.Core.Entities
 {
     public class Administrator
     {
+        public int AdminId { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        //FK Login
+        //FK SecurityLevel
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace EBlockbuster.DAL
 {
-    public class Class1
+    public class ConfigProvider
     {
 
     }

@@ -8,5 +8,10 @@ namespace EBlockbuster.Core.Interfaces
 {
     public interface IReportsRepository
     {
+        //GetMostProfitable
+        //GetMostProfitableByCategory
+        //GetLeastProfitable
+        //GetLeastProfitableByCategory
+        //GetTopRentedMovies
     }
 }

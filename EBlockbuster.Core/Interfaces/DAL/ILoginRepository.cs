@@ -8,5 +8,9 @@ namespace EBlockbuster.Core.Interfaces
 {
     public class ILoginRepository
     {
+        //Get
+        //Insert
+        //Update
+        //Delete
     }
 }

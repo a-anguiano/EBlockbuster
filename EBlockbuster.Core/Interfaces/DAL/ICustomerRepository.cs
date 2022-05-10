@@ -8,5 +8,9 @@ namespace EBlockbuster.Core.Interfaces
 {
     public interface ICustomerRepository
     {
+        //Get
+        //Insert
+        //Update
+        //Delete
     }
 }

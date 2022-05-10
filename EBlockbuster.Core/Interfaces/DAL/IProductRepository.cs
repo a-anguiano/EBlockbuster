@@ -9,7 +9,7 @@ namespace EBlockbuster.Core.Interfaces
 {
     public interface IProductRepository
     {
-        //Add
+        //Add   //Photos may be an issue
         Response<Product> Insert(Product product);
         //Update
         Response Update(Product product);
@@ -19,5 +19,7 @@ namespace EBlockbuster.Core.Interfaces
         Response<Product> Get(int productId);
         //GetAll
         Response<List<Product>> GetAll();
+
+        //GetByCategory
     }
 }

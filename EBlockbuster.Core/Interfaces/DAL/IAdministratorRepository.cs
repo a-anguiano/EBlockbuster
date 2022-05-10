@@ -8,5 +8,9 @@ namespace EBlockbuster.Core.Interfaces
 {
     public interface IAdministratorRepository
     {
+        //Get
+        //Insert
+        //Update
+        //Delete
     }
 }

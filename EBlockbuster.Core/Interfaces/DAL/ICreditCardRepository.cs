@@ -8,5 +8,9 @@ namespace EBlockbuster.Core.Interfaces
 {
     public interface ICreditCardRepository
     {
+        //Get
+        //Insert
+        //Update
+        //Delete
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EBlockbuster.Core.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,12 @@ namespace EBlockbuster.Core.Interfaces
 {
     public interface ICategoryRepository
     {
+        Response<Category> Insert(Category category);
+
+        Response Update(Category category);
+
+        Response Delete(int categoryId);
+
+        Response<Product> Get(int categoryId);
     }
 }

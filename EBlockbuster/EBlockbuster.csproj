@@ -10,4 +10,9 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\EBlockbuster.Core\EBlockbuster.Core.csproj" />
+    <ProjectReference Include="..\EBlockbuster.DAL\EBlockbuster.DAL.csproj" />
+  </ItemGroup>
+
 </Project>

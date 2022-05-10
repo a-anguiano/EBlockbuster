@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace EBlockbuster.Core.Interfaces
 {
-    public interface ILoginRepository
+    public interface IMyService
     {
-        //Get
-        //Insert
-        //Update
-        //Delete
+        string GetConnectionString();   //?
     }
 }

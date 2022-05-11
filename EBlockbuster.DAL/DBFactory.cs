@@ -1,5 +1,4 @@
 ﻿using EBlockbuster.Core.Interfaces;
-using FieldAgent.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 

@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using EBlockbuster.Core;
 using EBlockbuster.Core.Entities;
 using EBlockbuster.Core.Interfaces;
-using FieldAgent.DAL;
 using Microsoft.EntityFrameworkCore;
 
 namespace EBlockbuster.DAL.EF

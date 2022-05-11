@@ -8,7 +8,7 @@
     }
   },
   "profiles": {
-    "FieldAgent.Web": {
+    "EBlockbuster": {         //changed
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {

@@ -10,32 +10,20 @@ namespace EBlockbuster.DAL
         TEST,
         PROD
     }
-    public class DBFactory : IMyService
+    public class DBFactory
     {
-        private readonly IConfigurationRoot Config;
-        private readonly FactoryMode Mode;
-        private static string _connectionString;
+        public static DbContextOptions GetDbContext(FactoryMode mode)
+        {
+            string environment = mode == FactoryMode.TEST ? "Test" : "Prod";
 
-        public DBFactory(IConfigurationRoot config, FactoryMode mode = FactoryMode.PROD)
-        {
-            Config = config;
-            Mode = mode;
-        }
-
-        public string GetConnectionString()
-        {
-            string environment = Mode == FactoryMode.TEST ? "Test" : "Prod";
-            _connectionString = Config[$"ConnectionStrings:{environment}"];
-            return _connectionString;
-        }
-        public AppDbContext GetDbContext()
-        {
-            string environment = Mode == FactoryMode.TEST ? "Test" : "Prod";
+            var builder = new ConfigurationBuilder();
+            builder.AddUserSecrets<ConfigProvider>();
+            var config = builder.Build();
 
             var options = new DbContextOptionsBuilder<AppDbContext>()
-                .UseSqlServer(Config[$"ConnectionStrings:{environment}"])
+                .UseSqlServer(config[$"ConnectionStrings:{environment}"])
                 .Options;
-            return new AppDbContext(options);
+            return options;
         }
     }
 }

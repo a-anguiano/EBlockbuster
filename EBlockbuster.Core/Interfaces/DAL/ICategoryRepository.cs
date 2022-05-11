@@ -15,6 +15,6 @@ namespace EBlockbuster.Core.Interfaces
 
         Response Delete(int categoryId);
 
-        Response<Product> Get(int categoryId);
+        Response<Category> Get(int categoryId);
     }
 }

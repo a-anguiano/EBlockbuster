@@ -10,8 +10,9 @@ namespace EBlockbuster.Core.Entities
     {
         public int CreditCardId { get; set; }
         public int Number { get; set; }
-        public DateOnly ExpDate { get; set; }   //read as string?
+        public DateTime ExpDate { get; set; }   //read as string?
         public int SVC { get; set; }
-        //Connects to customer
+        //Connects to customer, determine relationship
+        public Customer Customer { get; set; }  //?
     }
 }

@@ -13,6 +13,7 @@ namespace EBlockbuster.Core.Entities
         public decimal Price { get; set; }
         public string Photo { get; set; }
         //FK Category
+
         //Connects to ProductCustomer
     }
 }

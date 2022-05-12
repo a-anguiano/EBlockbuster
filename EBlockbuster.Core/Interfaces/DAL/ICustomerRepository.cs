@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EBlockbuster.Core.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,9 +9,15 @@ namespace EBlockbuster.Core.Interfaces
 {
     public interface ICustomerRepository
     {
-        //Get
-        //Insert
-        //Update
-        //Delete
+        Response<Customer> Insert(Customer customer);
+
+        Response Update(Customer customer);
+
+        Response Delete(int customerId);
+
+        Response<Customer> Get(int customerId);
+
+        Response<List<Customer>> GetAll();
+
     }
 }

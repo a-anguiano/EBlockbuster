@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -14,9 +14,9 @@ namespace EBlockbuster.Core.Entities
         public string Name { get; set; }
         public decimal Price { get; set; }
         public string Photo { get; set; }
-        //FK Category
-
-        //Connects to ProductCustomer
+        public string Description { get; set; }
+        public int CategoryId { get; set; }
+        public Category Category { get; set; }
         public List<ProductCustomer> ProductCustomers { get; set; }
     }
 }

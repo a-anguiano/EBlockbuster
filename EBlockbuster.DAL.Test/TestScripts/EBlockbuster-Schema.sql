@@ -1,10 +1,10 @@
 use master;
 go
-drop database if exists EBlockbuster;
+drop database if exists TestEBlockbuster;
 go
-create database EBlockbuster;
+create database TestEBlockbuster;
 go
-use EBlockbuster;
+use TestEBlockbuster;
 go
 
 create table SecurityLevel (
@@ -26,7 +26,11 @@ create table CreditCard (
 create table [Login] (
     LoginId  int primary key identity(1,1),
     UserName varchar(50) not null unique,
-    [Password] varchar(15) not null
+    [Password] varchar(15) not null,
+    SecurityLevelId int not null
+    constraint fk_Login_SecurityLevelId
+        foreign key (SecurityLevelId)
+        references SecurityLevel(SecurityLevelId),
 );
 
 create table Customer (
@@ -36,11 +40,7 @@ create table Customer (
     Email varchar(50) not null,
     Phone varchar(50) not null,
     CreditCardId int not null,
-    LoginId int not null,
-    SecurityLevelId int not null,
-    constraint fk_Customer_SecurityLevelId
-        foreign key (SecurityLevelId)
-        references SecurityLevel(SecurityLevelId),
+    LoginId int not null
     constraint fk_Customer_LoginId
         foreign key (LoginId)
         references [Login](LoginId),
@@ -53,14 +53,10 @@ create table Administrator(
     AdminId int primary key identity(1,1),
     FirstName varchar(50) not null,
     LastName varchar(50) not null,
-    LoginId int not null,
-    SecurityLevelId int not null,
+    LoginId int not null
     constraint fk_Administrator_LoginId
         foreign key (LoginId)
         references [Login](LoginId),
-    constraint fk_Administrator_SecurityLevelId
-        foreign key (SecurityLevelId)
-        references SecurityLevel(SecurityLevelId)
 );
 
 create table Category(

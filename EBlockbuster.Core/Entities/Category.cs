@@ -14,6 +14,7 @@ namespace EBlockbuster.Core.Entities
         public string Name { get; set; }
         //Connects to Product
         //Just need an include
-        //public List<Product> Products { get; set; }
+        public List<Product> Products { get; set; }
+        
     }
 }

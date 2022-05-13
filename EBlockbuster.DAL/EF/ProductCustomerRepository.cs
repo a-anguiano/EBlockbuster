@@ -85,6 +85,74 @@ namespace EBlockbuster.DAL.EF
             }
             return response;
         }
+        
+        public Response DeleteByProductCustomer(int productId, int customerId)
+        {
+            Response response = new Response();
+            try
+            {
+                using (var db = new AppDbContext(Dbco))
+                {
+                    var product = GetByProductCustomer(productId, customerId);
+                    if (product.Data.Count > 0)
+                    {
+                        foreach (var item in product.Data)
+                        {
+                            db.ProductCustomers.Remove(item);
+                        }
+                        db.SaveChanges();
+
+                        response.Success = true;
+                        response.Message = "Purchase Deleted by product and customer";
+                    }
+                    else
+                    {
+                        response.Success = false;
+                        response.Message = "Purchase not found by product and customer";
+                    }
+                    return response;
+                }
+            }
+            catch (Exception ex)
+            {
+                response.Success = false;
+                response.Message = ex.Message;
+            }
+            return response;
+        }
+
+        public Response<List<ProductCustomer>> GetByProductCustomer (int productId, int customerId)
+        {
+            Response<List<ProductCustomer>> response = new Response<List<ProductCustomer>>();
+            try
+            {
+                using (var db = new AppDbContext(Dbco))
+                {
+                    var product = db.ProductCustomers
+                        .Where(p => p.ProductId == productId && p.CustomerId == customerId)
+                        .ToList();
+                    
+                    if (product != null)
+                    {
+                        response.Success = true;
+                        response.Message = "Purchase found by product and customer";
+                        response.Data = product;
+                    }
+                    else
+                    {
+                        response.Success = false;
+                        response.Message = "Purchase not found by product and customer";
+                    }
+                    return response;
+                }
+            }
+            catch (Exception ex)
+            {
+                response.Success = false;
+                response.Message = ex.Message;
+            }
+            return response;
+        }
         public Response<List<ProductCustomer>> GetByCustomerId(int customerId)
         {
             Response<List<ProductCustomer>> response = new Response<List<ProductCustomer>>();

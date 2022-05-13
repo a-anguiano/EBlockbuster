@@ -17,9 +17,8 @@ namespace EBlockbuster.DAL.EF
         public CategoryRepository(FactoryMode mode = FactoryMode.TEST)
         {
             Dbco = DBFactory.GetDbContext(mode);
-            //DbFac = dbfac;
         }
-       /* public Response Delete(int categoryId)
+        public Response Delete(int categoryId)
         {
 
             Response response = new Response();
@@ -34,11 +33,11 @@ namespace EBlockbuster.DAL.EF
                     foreach (var item in db.Categories.Where(c => c.CategoryId == categoryId).ToList())
                     {
                         db.Categories.Remove(item);
-                        
+
                     }
                     db.SaveChanges();
-                    *//* Category category = db.Categories.Find(categoryId);
-                     db.Categories.Remove(category);*//*
+                    Category category = db.Categories.Find(categoryId);
+                    db.Categories.Remove(category);
 
                     response.Success = true;
                     response.Message = $"Deleting Category ID: {categoryId}";
@@ -47,16 +46,16 @@ namespace EBlockbuster.DAL.EF
                 return response;
 
             }
-            
+
             catch (Exception ex)
             {
-               
+
                 response.Success = false;
                 response.Message = ex.Message;
-                
+
             }
             return response;
-        }*/
+        }
 
         public Response<Category> Get(int categoryId)       //consider try catches
         {

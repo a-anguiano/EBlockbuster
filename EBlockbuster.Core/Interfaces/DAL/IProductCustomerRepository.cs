@@ -11,8 +11,8 @@ namespace EBlockbuster.Core.Interfaces
     {
         Response<ProductCustomer> Insert(ProductCustomer productCustomer);
         Response Update(ProductCustomer productCustomer);
-        Response Delete(int productId, int customerId);
-        Response<ProductCustomer> Get(int productId, int customerId);
+        Response DeleteByProduct(int productId);
+        Response DeleteByCustomer(int customerId);
         Response<List<ProductCustomer>> GetByProductId(int productId);
         Response<List<ProductCustomer>> GetByCustomerId(int customerId);
     }

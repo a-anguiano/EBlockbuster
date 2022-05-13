@@ -21,8 +21,26 @@ namespace EBlockbuster.DAL.EF
 
         public Response Delete(int adminId)
         {
+            Response response = new Response();
+            try
+            {
+                using (var db = new AppDbContext(Dbco))
+                {
+                    db.Administrators.ToList();
 
-            throw new NotImplementedException();
+                    Administrator administrator = db.Administrators.Find(adminId);
+                    db.Administrators.Remove(administrator);
+                    db.SaveChanges();
+                    response.Message = $"Deleting Administrator ID: {adminId}";
+                    response.Success = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                response.Success = false;
+                response.Message = ex.Message;
+            }
+            return response;
         }
 
         public Response<Administrator> Get(int adminId)

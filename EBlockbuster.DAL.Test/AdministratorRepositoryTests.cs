@@ -16,7 +16,6 @@ namespace EBlockbuster.DAL.Test
 
         Administrator admin3 = new Administrator
         {
-            //(FirstName, LastName, LoginId) values ('Austina', 'Rogerot', 3);
             AdminId = 3,
             FirstName = "Austina",
             LastName = "Rogerot",
@@ -58,12 +57,12 @@ namespace EBlockbuster.DAL.Test
             };
 
             db.Insert(expected);
-            expected.AdminId = 11;
+            expected.AdminId = 6;
 
-            Assert.AreEqual(expected.ToString(), db.Get(11).Data.ToString());
-            Assert.AreEqual(expected.FirstName, db.Get(11).Data.FirstName);
-            Assert.AreEqual(expected.LastName, db.Get(11).Data.LastName);
-            Assert.AreEqual(expected.LoginId, db.Get(11).Data.LoginId);
+            Assert.AreEqual(expected.ToString(), db.Get(6).Data.ToString());
+            Assert.AreEqual(expected.FirstName, db.Get(6).Data.FirstName);
+            Assert.AreEqual(expected.LastName, db.Get(6).Data.LastName);
+            Assert.AreEqual(expected.LoginId, db.Get(6).Data.LoginId);
         }
 
         [Test]

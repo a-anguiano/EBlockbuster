@@ -17,9 +17,9 @@ namespace EBlockbuster.DAL.Test
         CreditCard cc3 = new CreditCard
         {
             CreditCardId = 3,
-            Number = 5108756093665799,
+            Number = "5108756093665799",
             ExpDate = DateTime.Parse("9/1/2024"),
-            SVC = 288,
+            SVC = "288",
             BillingAddress = "287 Meadow Valley Park",
             City = "Atlanta",
             State = "GA",
@@ -37,8 +37,8 @@ namespace EBlockbuster.DAL.Test
         [Test]
         public void TestGet()
         {
-            //Assert.IsTrue(db.Get(3).Success);
-            //Assert.AreEqual("Credit Card ID: 3", db.Get(3).Message);
+            Assert.IsTrue(db.Get(3).Success);
+            Assert.AreEqual("Credit Card ID: 3", db.Get(3).Message);
             Assert.AreEqual(cc3.Number, db.Get(3).Data.Number);
             Assert.AreEqual(cc3.ExpDate, db.Get(3).Data.ExpDate);
             Assert.AreEqual(cc3.SVC, db.Get(3).Data.SVC);
@@ -53,9 +53,9 @@ namespace EBlockbuster.DAL.Test
         {
             CreditCard expected = new CreditCard
             {
-                Number = 3141592654311111,
+                Number = "3141592654311111",
                 ExpDate = DateTime.Parse("8/1/2024"),
-                SVC = 234,
+                SVC = "234",
                 BillingAddress = "123 Death Valley Park",
                 City = "Atlanta",
                 State = "GA",

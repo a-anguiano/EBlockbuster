@@ -33,6 +33,28 @@ namespace EBlockbuster.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("/api/[controller]/productcustomer/{id}", Name = "GetCustomerByProduct")]
+        public IActionResult GetProductByCustomer(int id)
+        {
+            var product = _customerRepo.GetCustomerByProduct(id);
+            if (!product.Success)
+            {
+                return BadRequest(product.Message);
+            }
+            return Ok(product.Data.Select(p => new CustomerModel()
+            {
+                CustomerId = p.CustomerId,                
+                FirstName = p.FirstName,
+                LastName = p.LastName,
+                Email = p.Email,
+                Phone = p.Phone,
+                CreditCardId = p.CreditCardId,
+                LoginId = p.LoginId
+            }));
+        }
+
+
         [HttpPost]
         public IActionResult InsertCustomer(CustomerModel customerModel)
         {

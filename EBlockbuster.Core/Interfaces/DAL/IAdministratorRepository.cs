@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EBlockbuster.Core.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,9 +9,14 @@ namespace EBlockbuster.Core.Interfaces
 {
     public interface IAdministratorRepository
     {
-        //Get
-        //Insert
-        //Update
-        //Delete
+        Response<Administrator> Insert(Administrator administrator);
+
+        Response Update(Administrator administrator);
+
+        Response Delete(int adminId);
+
+        Response<Administrator> Get(int adminId);
+
+        Response<List<Administrator>> GetAll();
     }
 }

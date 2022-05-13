@@ -11,9 +11,9 @@ namespace EBlockbuster.Core.Entities
     public class CreditCard
     {
         public int CreditCardId { get; set; }
-        public long Number { get; set; }
+        public string Number { get; set; }  //long
         public DateTime ExpDate { get; set; }   //read as string?
-        public int SVC { get; set; }
+        public string SVC { get; set; }
         public string BillingAddress { get; set; }
         public string City { get; set; }
         public string State { get; set; }

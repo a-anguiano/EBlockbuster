@@ -19,5 +19,7 @@ namespace EBlockbuster.Core.Interfaces
 
         Response<List<Customer>> GetAll();
 
+        Response<List<Customer>> GetCustomerByProduct(int productId);
+
     }
 }

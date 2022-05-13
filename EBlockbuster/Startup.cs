@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.AspNetCore.Mvc;
+using EBlockbuster.Core.Interfaces.DAL;
 
 namespace EBlockbuster
 {
@@ -52,6 +53,7 @@ namespace EBlockbuster
             services.AddTransient<ILoginRepository, LoginRepository>();
             services.AddTransient<IProductCustomerRepository, ProductCustomerRepository>();
             services.AddTransient<IProductRepository, ProductRepository>();
+            services.AddTransient<ISecurityLevelRepository, SecurityLevelRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

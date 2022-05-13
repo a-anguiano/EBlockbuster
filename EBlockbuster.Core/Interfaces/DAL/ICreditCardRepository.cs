@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EBlockbuster.Core.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,9 +9,12 @@ namespace EBlockbuster.Core.Interfaces
 {
     public interface ICreditCardRepository
     {
-        //Get
-        //Insert
-        //Update
-        //Delete
+        Response<CreditCard> Insert(CreditCard creditCard);
+
+        Response Update(CreditCard creditCard);
+
+        Response Delete(int creditCardId);
+
+        Response<CreditCard> Get(int creditCardId);
     }
 }

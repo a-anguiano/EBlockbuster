@@ -19,8 +19,5 @@ namespace EBlockbuster.Core.Entities
         //FK Login
         public int LoginId { get; set; }
         public Login Login { get; set; }
-        //FK SecurityLevel
-        public int SecurityLevelId { get; set; }
-        public SecurityLevel SecurityLevel { get; set; }
     }
 }

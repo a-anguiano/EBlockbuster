@@ -4,7 +4,7 @@ using NUnit.Framework;
 
 namespace EBlockbuster.DAL.Test
 {
-    public class Tests
+    public class CustomerRepositoryTest
     {
         CustomerRepository db;
         DBFactory dbf;

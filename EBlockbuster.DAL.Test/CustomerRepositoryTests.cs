@@ -39,7 +39,6 @@ namespace EBlockbuster.DAL.Test
         {
             Assert.IsTrue(db.Get(5).Success);
             Assert.AreEqual("Customer ID: 5", db.Get(5).Message);
-            //Assert.AreEqual(customerRamsey, db.Get(5).Data.ToString()); //.ToString()
             Assert.AreEqual(customerRamsey.FirstName, db.Get(5).Data.FirstName);
             Assert.AreEqual(customerRamsey.LastName, db.Get(5).Data.LastName);
             Assert.AreEqual(customerRamsey.Email, db.Get(5).Data.Email);

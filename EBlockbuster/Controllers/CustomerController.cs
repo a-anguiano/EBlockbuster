@@ -1,4 +1,6 @@
-﻿using EBlockbuster.Core.Interfaces;
+﻿using EBlockbuster.Core.Entities;
+using EBlockbuster.Core.Interfaces;
+using EBlockbuster.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -31,6 +33,120 @@ namespace EBlockbuster.Controllers
             }
         }
 
+        [HttpPost]
+        public IActionResult InsertCustomer(CustomerModel customerModel)
+        {
+            if (ModelState.IsValid)
+            {
+                Customer customer = new Customer
+                {
+                    FirstName = customerModel.FirstName,
+                    LastName = customerModel.LastName,
+                    Email = customerModel.Email,
+                    Phone = customerModel.Phone,
+                    CreditCardId = customerModel.CreditCardId,
+                    LoginId = customerModel.LoginId
+                };
 
+                var result = _customerRepo.Insert(customer);
+
+                if (result.Success)
+                {
+                    return CreatedAtRoute(nameof(GetCustomer), new { loginId = result.Data.LoginId, creditCardId = result.Data.CreditCardId, customerId = result.Data.CustomerId }, result.Data);
+                }
+                else
+                {
+                    return BadRequest(result.Message);
+                }
+            }
+            else
+            {
+                return BadRequest(ModelState);
+
+            }
+        }
+
+        [HttpDelete("{customerId}")]
+        public IActionResult DeleteCustomer(int customerId)
+        {
+            var findResult = _customerRepo.Get(customerId);
+            if (!findResult.Success)
+            {
+                return NotFound(findResult.Message);
+            }
+
+            var result = _customerRepo.Delete(customerId);
+
+            if (result.Success)
+            {
+                return Ok(result.Message);
+            }
+            else
+            {
+                return BadRequest(result.Message);
+            }
+        }
+
+        [HttpPut]
+        [Route("/api/[controller]/")]
+        public IActionResult UpdateCustomer(CustomerModel customerModel)
+        {
+            if (ModelState.IsValid && customerModel.CustomerId > 0)
+            {
+                Customer customer = new Customer
+                {
+                    CustomerId = customerModel.CustomerId,
+                    FirstName = customerModel.FirstName,
+                    LastName = customerModel.LastName,
+                    Email = customerModel.Email,
+                    Phone = customerModel.Phone,
+                    CreditCardId = customerModel.CreditCardId,
+                    LoginId = customerModel.LoginId
+                };
+
+                var findResult = _customerRepo.Get(customer.CustomerId);
+                if (!findResult.Success)
+                {
+                    return NotFound(findResult.Message);
+                }
+
+                var result = _customerRepo.Update(customer);
+                if (result.Success)
+                {
+                    return Ok(result.Message);
+                }
+                else
+                {
+                    return BadRequest(result.Message);
+                }
+            }
+            else
+            {
+                if (customerModel.CustomerId < 1)
+                    ModelState.AddModelError("CustomerId", "Invalid Customer ID");
+                return BadRequest(ModelState);
+            }
+        }
+
+        [HttpGet]
+        [Route("/api/[controller]/", Name = "GetAllCustomers")]
+        public IActionResult GetAllCustomers()
+        {
+            var customers = _customerRepo.GetAll();
+            if (!customers.Success)
+            {
+                return BadRequest(customers.Message);
+            }
+            return Ok(customers.Data.Select(c => new CustomerModel()
+            {
+                CustomerId = c.CustomerId,
+                FirstName = c.FirstName,
+                LastName = c.LastName,
+                Email = c.Email,
+                Phone = c.Phone,
+                CreditCardId = c.CreditCardId,
+                LoginId = c.LoginId
+            }));
+        }
     }
 }

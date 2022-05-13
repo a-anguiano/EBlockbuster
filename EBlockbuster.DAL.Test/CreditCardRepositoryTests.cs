@@ -40,7 +40,7 @@ namespace EBlockbuster.DAL.Test
             Assert.IsTrue(db.Get(3).Success);
             Assert.AreEqual("Credit Card ID: 3", db.Get(3).Message);
             Assert.AreEqual(cc3.Number, db.Get(3).Data.Number);
-            //Assert.AreEqual(cc3.ExpDate, db.Get(3).Data.ExpDate);
+            Assert.AreEqual(cc3.ExpDate, db.Get(3).Data.ExpDate);
             Assert.AreEqual(cc3.SVC, db.Get(3).Data.SVC);
             Assert.AreEqual(cc3.BillingAddress, db.Get(3).Data.BillingAddress);
             Assert.AreEqual(cc3.City, db.Get(3).Data.City);

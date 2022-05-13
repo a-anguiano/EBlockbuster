@@ -10,10 +10,9 @@ namespace EBlockbuster.Core.Interfaces
     public interface IProductCustomerRepository
     {
         Response<ProductCustomer> Insert(ProductCustomer productCustomer);
-        Response Update(ProductCustomer productCustomer);
-        Response DeleteByProduct(int productId);
-        Response DeleteByCustomer(int customerId);
+        Response DeleteByProductCustomer(int productId, int customerId);
         Response<List<ProductCustomer>> GetByProductId(int productId);
         Response<List<ProductCustomer>> GetByCustomerId(int customerId);
+        Response<List<ProductCustomer>> GetByProductCustomer(int productId, int customerId);
     }
 }

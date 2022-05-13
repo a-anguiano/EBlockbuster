@@ -97,6 +97,18 @@ namespace EBlockbuster.DAL.Test
 
         }
 
+        [Test]
+        public void TestGetProductByCustomer()
+        {
+            var getProduct = db.GetCustomerByProduct(1);
+            Assert.IsTrue(getProduct.Success);
+
+            foreach (var item in getProduct.Data)
+            {
+                Assert.AreEqual(10, item.CustomerId);
+            }
+        }
+
         //Create sad tests?
     }
 }

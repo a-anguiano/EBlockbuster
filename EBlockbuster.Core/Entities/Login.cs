@@ -12,6 +12,8 @@ namespace EBlockbuster.Core.Entities
         public string Username { get; set; }
         public string Password { get; set; }
 
-        //Connects to Customer and Admin
+        public int SecurityLevelId { get; set; }
+        public SecurityLevel SecurityLevel { get; set; }
+
     }
 }

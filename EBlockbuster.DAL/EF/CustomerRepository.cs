@@ -163,6 +163,43 @@ namespace EBlockbuster.DAL.EF
             return response;
         }
 
+        public Response<List<Customer>> GetCustomerByProduct(int productId)
+        {
+            Response<List<Customer>> response = new Response<List<Customer>>();
+            try
+            {
+                using (var db = new AppDbContext(Dbco))
+                {
+                    var customer = db.Customers
+                        .Include(c => c.ProductCustomers)
+                        .ToList();
+
+                    if (customer != null)
+                    {
+                        response.Data = customer
+                            .Where(pc => pc.ProductCustomers
+                            .Any(c => c.ProductId == productId))
+                            .ToList();
+                        response.Success = true;
+                        response.Message = "Customer found";
+                    }
+                    else
+                    {
+                        response.Success = false;
+                        response.Message = "Customer not found";
+                    }
+                    return response;
+                }
+            }
+            catch (Exception ex)
+            {
+                response.Success = false;
+                response.Message = ex.Message;
+            }
+            return response;
+        }
+
+
         public void SetKnownGoodState()
         {
             using (var db = new AppDbContext(Dbco))

@@ -81,5 +81,18 @@ namespace EBlockbuster.DAL.Test
             Assert.IsFalse(db.GetByCustomerId(1).Success);
             Assert.IsFalse(db.GetByProductId(10).Success);
         }
+        [Test]
+        public void TestGetByProductandCustomer()
+        {
+            var get = db.GetByProductCustomer(1, 10);
+            Assert.AreEqual(productCustomer.ProductId, 1);
+            Assert.AreEqual(productCustomer.CustomerId, 10);
+        }
+        [Test]
+        public void TestDeleteByProductCustomer()
+        {
+            var delete = db.DeleteByProductCustomer(1, 10);
+            Assert.IsTrue(delete.Success);
+        }
     }
 }

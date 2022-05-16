@@ -12,22 +12,21 @@ namespace EBlockbuster.Controllers
         {
             _loginRepository = loginRepository;
         }
+
         [HttpGet]
-        [Route("/api/[controller]/{id}", Name = "GetLogin")]
-        public IActionResult GetLogin(int id)
+        [Route("/api/[controller]/{loginId}", Name = "GetLogin")]
+        public IActionResult GetLogin(int loginId)
         {
-            var login = _loginRepository.Get(id);
-            if (!login.Success)
+            var login = _loginRepository.Get(loginId);
+
+            if (login.Success)
             {
-                return BadRequest(login.Message);
+                return Ok(login.Data);
             }
-            return Ok(new LoginModel()
+            else
             {
-                LoginId = login.Data.LoginId,
-                Username = login.Data.Username,
-                Password = login.Data.Password,
-                SecurityLevelId = login.Data.SecurityLevelId
-            });
+                return NotFound(login.Message);
+            }
         }
 
         [HttpPost]
@@ -38,27 +37,30 @@ namespace EBlockbuster.Controllers
             {
                 Login newLogin = new Login()
                 {
-                    //LoginId?
                     Username = login.Username,
-                    Password = login.Password
-                    //sec lvl Id?
+                    Password = login.Password,
+                    SecurityLevelId = 2
                 };
 
                 var result = _loginRepository.Insert(newLogin);
-                if (!result.Success)
+                if (result.Success)
                 {
-                    return BadRequest(result.Message);
+                    return CreatedAtRoute(nameof(GetLogin), new { loginId = result.Data.LoginId }, result.Data);
+
                 }
                 else
                 {
-                    return CreatedAtRoute("GetLogin", new { id = newLogin.LoginId }, newLogin);
+                    return BadRequest(result.Message);
                 }
+
             }
             else
             {
                 return BadRequest(ModelState);
+
             }
         }
+
 
         [HttpPut]
         public IActionResult Update(LoginModel login)

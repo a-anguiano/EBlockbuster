@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EBlockbuster.Core.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,9 +9,13 @@ namespace EBlockbuster.Core.Interfaces
 {
     public interface ILoginRepository
     {
-        //Get
-        //Insert
-        //Update
-        //Delete
+        Response<Login> Insert(Login login);
+
+        Response Update(Login login);
+
+        Response Delete(int loginId);
+
+        Response<Login> Get(int loginId);
     }
 }
+

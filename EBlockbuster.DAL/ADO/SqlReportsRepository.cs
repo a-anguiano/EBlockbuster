@@ -1,39 +1,56 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using EBlockbuster.Core;
 using EBlockbuster.Core.DTOs;
 using EBlockbuster.Core.Interfaces;
+using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Configuration;
 
 namespace EBlockbuster.DAL.ADO
 {
     public class SqlReportsRepository : IReportsRepository
     {
-        public Response<LeastProfitableItem> GetLeastProfitable()
-        {
-            throw new NotImplementedException();
-        }
+        private readonly IConfigurationRoot Config;
+        string connectionString;
+        private readonly FactoryMode mode;
 
-        public Response<LeastProfitableItemByCategory> GetLeastProfitableByCategory(int categoryId)
+        public SqlReportsRepository(IConfigurationRoot config)
         {
-            throw new NotImplementedException();
+            Config = config;
+            string environment = mode == FactoryMode.TEST ? "Test" : "Prod";
+            connectionString = Config[$"ConnectionStrings:{environment}"];
         }
-
-        public Response<List<MostProfitableItem>> GetMostProfitable()
+        public Response<List<TopThreeRentedProducts>> GetTopThreeRentedProducts()
         {
-            throw new NotImplementedException();
-        }
+                Response<List<TopThreeRentedProducts>> response = new Response<List<TopThreeRentedProducts>>();
+                response.Data = new List<TopThreeRentedProducts>();
+                using (var connection = new SqlConnection(connectionString))
+                {
+                    var cmd = new SqlCommand("TopThreeRentedProducts", connection);
+                    cmd.CommandType = CommandType.StoredProcedure;
 
-        public Response<MostProfitableItemByCategory> GetMostProfitableByCategory(int categoryId)
-        {
-            throw new NotImplementedException();
-        }
+                    connection.Open();
 
-        Response<MostProfitableItem> IReportsRepository.GetMostProfitable()
-        {
-            throw new NotImplementedException();
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            response.Data.Add(new TopThreeRentedProducts
+                            {
+                                ProductId = (int)reader["ProductId"],
+                                ProductTitle = reader["ProductTitle"].ToString(),
+                                ProductCount = (int)reader["ProductCount"]
+                            });
+                            response.Success = true;
+                        }
+                    }
+                }
+
+                return response;
         }
     }
 }

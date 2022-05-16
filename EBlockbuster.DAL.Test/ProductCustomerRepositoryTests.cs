@@ -29,12 +29,12 @@ namespace EBlockbuster.DAL.Test
         [Test]
         public void TestGetByCustomer()
         {
-            var getbyCustomerId = db.GetByCustomerId(10);
+            var getbyCustomerId = db.GetByCustomerId(7);
             Assert.IsTrue(getbyCustomerId.Success);
 
             foreach (var item in getbyCustomerId.Data)
             {
-                Assert.AreEqual(item.ProductId, 1);
+                Assert.AreEqual(item.ProductId, 4);
             }
         }
         [Test]

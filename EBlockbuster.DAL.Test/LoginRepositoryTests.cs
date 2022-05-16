@@ -24,5 +24,7 @@ namespace EBlockbuster.DAL.Test
         {
             Assert.AreEqual(userName.Username, "test");
         }
+
+
     }
 }

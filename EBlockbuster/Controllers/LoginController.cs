@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EBlockbuster.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class LoginController : Controller
     {
         private readonly ILoginRepository _loginRepository;

@@ -51,6 +51,7 @@ namespace EBlockbuster.DAL.Test
                 Photo = "PlaceHolderLinkToPicture",
                 Description = "New Product",
                 CategoryId = 1,
+                PriceId = 1
             };
 
             var add = db.Insert(newProduct);
@@ -68,7 +69,8 @@ namespace EBlockbuster.DAL.Test
                 Name = "Updated Product",
                 Photo = "Updated PlaceHolderLinkToPicture",
                 Description = "Updated Product",
-                CategoryId = 6
+                CategoryId = 6,
+                PriceId = 1
             };
 
             var update = db.Update(newProduct);
@@ -85,12 +87,12 @@ namespace EBlockbuster.DAL.Test
         [Test]
         public void TestGetProductByCustomer()
         {
-            var getCustomer = db.GetProductByCustomer(10);
+            var getCustomer = db.GetProductByCustomer(5);
             Assert.IsTrue(getCustomer.Success);
 
             foreach (var item in getCustomer.Data)
             {
-                Assert.AreEqual(1, item.ProductId);
+                Assert.AreEqual(6, item.ProductId);
             }
         }
     }

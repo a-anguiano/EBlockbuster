@@ -25,7 +25,6 @@ namespace EBlockbuster.Models
         [Required(ErrorMessage = "Login Id is required")]
         public int LoginId { get; set; }
 
-        [Required(ErrorMessage = "Credit Card Id is required")]
-        public int CreditCardId { get; set; }
+        public int? CreditCardId { get; set; }
     }
 }

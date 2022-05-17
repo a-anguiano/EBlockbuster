@@ -17,7 +17,7 @@ namespace EBlockbuster.Core.Entities
         public string Phone { get; set; }
 
         //FK CreditCard
-        public int CreditCardId { get; set; }
+        public int? CreditCardId { get; set; }
         public CreditCard CreditCard { get; set; }
         //FK Login
         public int LoginId { get; set; }

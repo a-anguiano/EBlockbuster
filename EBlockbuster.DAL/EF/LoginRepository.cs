@@ -138,6 +138,11 @@ namespace EBlockbuster.DAL.EF
                 return response;
             }
         }
+        public Response<Login> GetByUserPass()
+        {
+            throw new NotImplementedException();
+        }
+
 
         public void SetKnownGoodState()
         {
@@ -145,6 +150,8 @@ namespace EBlockbuster.DAL.EF
             {
                 db.Database.ExecuteSqlRaw("SetKnownGoodState");
             }
-        }        
+        }
+
+        
     }
 }

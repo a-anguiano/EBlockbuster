@@ -110,10 +110,17 @@ namespace EBlockbuster.DAL.EF
 
         public Response Update(Login login)
         {
+<<<<<<< HEAD
+            Response<Login> response = new Response<Login>();
+            try
+            {
+                
+=======
             Response<Login> response = new Response<Login>();            
             try
             {
                
+>>>>>>> main
                 using (var db = new AppDbContext(Dbco))
                 {
                     db.Logins.Update(login);
@@ -124,18 +131,31 @@ namespace EBlockbuster.DAL.EF
                         response.Success = true;
                         response.Message = "Login updated successfully";
                     }
+<<<<<<< HEAD
+                    catch 
+                    {
+                        response.Success = false;
+                        response.Message = "Login update failed";
+                    }
+
+=======
                     catch
                     {
                         response.Success = false;
                         response.Message = "Login not updated.";
                     }
                    
+>>>>>>> main
                 }
                 return response;
             }
             catch (Exception ex)
             {
+<<<<<<< HEAD
+                
+=======
                
+>>>>>>> main
                 response.Success = false;
                 response.Message = ex.Message;
                 return response;

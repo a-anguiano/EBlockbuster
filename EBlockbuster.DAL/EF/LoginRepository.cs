@@ -76,21 +76,32 @@ namespace EBlockbuster.DAL.EF
 
         public Response<Login> Insert(Login login)
         {
+            Response<Login> response = new Response<Login>();            
             try
             {
-                Response<Login> response = new Response<Login>();
+                
                 using (var db = new AppDbContext(Dbco))
                 {
                     db.Logins.Add(login);
-                    db.SaveChanges();
-                    response.Success = true;
-                    response.Message = "Login added successfully";
+                    try
+                    {
+                        db.SaveChanges();
+                        response.Data = login;
+                        response.Success = true;
+                        response.Message = "Login added successfully";
+                    }
+                    catch
+                    {
+                        response.Success = false;
+                        response.Message = "Login not added, Login already exsits.";
+                    }
+                    
                 }
                 return response;
             }
             catch (Exception ex)
             {
-                Response<Login> response = new Response<Login>();
+               
                 response.Success = false;
                 response.Message = ex.Message;
                 return response;
@@ -99,10 +110,17 @@ namespace EBlockbuster.DAL.EF
 
         public Response Update(Login login)
         {
+<<<<<<< HEAD
             Response<Login> response = new Response<Login>();
             try
             {
                 
+=======
+            Response<Login> response = new Response<Login>();            
+            try
+            {
+               
+>>>>>>> main
                 using (var db = new AppDbContext(Dbco))
                 {
                     db.Logins.Update(login);
@@ -113,18 +131,31 @@ namespace EBlockbuster.DAL.EF
                         response.Success = true;
                         response.Message = "Login updated successfully";
                     }
+<<<<<<< HEAD
                     catch 
                     {
                         response.Success = false;
                         response.Message = "Login update failed";
                     }
 
+=======
+                    catch
+                    {
+                        response.Success = false;
+                        response.Message = "Login not updated.";
+                    }
+                   
+>>>>>>> main
                 }
                 return response;
             }
             catch (Exception ex)
             {
+<<<<<<< HEAD
                 
+=======
+               
+>>>>>>> main
                 response.Success = false;
                 response.Message = ex.Message;
                 return response;

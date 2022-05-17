@@ -99,21 +99,32 @@ namespace EBlockbuster.DAL.EF
 
         public Response Update(Login login)
         {
+            Response<Login> response = new Response<Login>();
             try
             {
-                Response<Login> response = new Response<Login>();
+                
                 using (var db = new AppDbContext(Dbco))
                 {
                     db.Logins.Update(login);
-                    db.SaveChanges();
-                    response.Success = true;
-                    response.Message = "Login updated successfully";
+                    try
+                    {
+                        db.SaveChanges();
+                        response.Data = login;
+                        response.Success = true;
+                        response.Message = "Login updated successfully";
+                    }
+                    catch 
+                    {
+                        response.Success = false;
+                        response.Message = "Login update failed";
+                    }
+
                 }
                 return response;
             }
             catch (Exception ex)
             {
-                Response<Login> response = new Response<Login>();
+                
                 response.Success = false;
                 response.Message = ex.Message;
                 return response;

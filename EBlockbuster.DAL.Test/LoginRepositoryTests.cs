@@ -57,6 +57,42 @@ namespace EBlockbuster.DAL.Test
             Assert.AreEqual(expected.SecurityLevelId, db.Get(16).Data.SecurityLevelId);
         }
 
+        [Test]
+        public void TestUpdate()
+        {
+            Login expected = new Login
+            {
+                Username = "abc123",
+                Password = "passyWordy",
+                SecurityLevelId = 2
+            };
 
+            db.Update(expected);
+            expected.LoginId = 16;
+
+            Assert.AreEqual(expected.ToString(), db.Get(16).Data.ToString());
+            Assert.AreEqual(expected.Username, db.Get(16).Data.Username);
+            Assert.AreEqual(expected.Password, db.Get(16).Data.Password);
+            Assert.AreEqual(expected.SecurityLevelId, db.Get(16).Data.SecurityLevelId);
+        }
+
+        [Test]
+        public void TestDelete()
+        {
+            Login expected = new Login
+            {
+                Username = "abc123",
+                Password = "passyWordy",
+                SecurityLevelId = 2
+            };
+
+            db.Delete(loginId: 16);
+           
+
+            Assert.IsFalse(db.Get(16).Success);
+        }
+
+
+        
     }
 }

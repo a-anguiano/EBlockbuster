@@ -1,11 +1,10 @@
-﻿using EBlockbuster.Core.Entities;
+using EBlockbuster.Core.Entities;
 using EBlockbuster.Core.Interfaces;
 using EBlockbuster.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EBlockbuster.Controllers
 {
-
     [Route("api/[controller]")]
     [ApiController]
     public class LoginController : ControllerBase

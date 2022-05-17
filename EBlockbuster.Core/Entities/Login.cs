@@ -15,6 +15,7 @@ namespace EBlockbuster.Core.Entities
         public string Password { get; set; }
 
         public int SecurityLevelId { get; set; }
+        
         public SecurityLevel SecurityLevel { get; set; }
 
     }

@@ -16,6 +16,8 @@ namespace EBlockbuster.Core.Interfaces
         Response Delete(int loginId);
 
         Response<Login> Get(int loginId);
+
+        Response<Login> GetByUserPass();
     }
 }
 

@@ -1,4 +1,4 @@
-﻿using EBlockbuster.Core.Entities;
+using EBlockbuster.Core.Entities;
 using EBlockbuster.Core.Interfaces;
 using EBlockbuster.Models;
 using Microsoft.AspNetCore.Mvc;

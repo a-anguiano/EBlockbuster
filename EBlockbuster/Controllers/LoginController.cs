@@ -5,9 +5,13 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EBlockbuster.Controllers
 {
+<<<<<<< HEAD
+    public class LoginController : ControllerBase
+=======
     [Route("api/[controller]")]
     [ApiController]
     public class LoginController : Controller
+>>>>>>> main
     {
         private readonly ILoginRepository _loginRepository;
         public LoginController(ILoginRepository loginRepository)
@@ -65,6 +69,7 @@ namespace EBlockbuster.Controllers
 
 
         [HttpPut]
+        [Route("/api/[controller]/")]        
         public IActionResult Update(LoginModel login)
         {
             if (ModelState.IsValid)
@@ -73,7 +78,8 @@ namespace EBlockbuster.Controllers
                 {
                     LoginId = login.LoginId,
                     Username = login.Username,
-                    Password = login.Password
+                    Password = login.Password,
+                    SecurityLevelId = login.SecurityLevelId
                 };
 
                 var findResult = _loginRepository.Get(updateLogin.LoginId);
@@ -95,6 +101,27 @@ namespace EBlockbuster.Controllers
             else
             {
                 return BadRequest(ModelState);
+            }
+        }
+        
+        [HttpDelete]
+        [Route("/api/[controller]/{loginId}")]
+        public IActionResult Delete(int loginId)
+        {
+            var findResult = _loginRepository.Get(loginId);
+            if (!findResult.Success)
+            {
+                return NotFound(findResult.Message);
+            }
+            
+            var result = _loginRepository.Delete(loginId);
+            if (result.Success)
+            {
+                return Ok(result.Message);
+            }
+            else
+            {
+                return BadRequest(result.Message);
             }
         }
     }

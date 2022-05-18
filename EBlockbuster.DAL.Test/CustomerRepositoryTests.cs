@@ -119,6 +119,15 @@ namespace EBlockbuster.DAL.Test
             }
         }
 
+        [Test]
+        public void TestGetCustomerByLoginId()
+        {
+            var result = db.GetCustomerByLoginId(8);
+            Assert.AreEqual(result.Data.FirstName, "Francene");
+            Assert.AreEqual(result.Data.LastName, "Harburtson");
+            Assert.AreEqual(result.Data.Phone, "404-482-8248");
+            Assert.AreEqual(result.Data.CustomerId, 3);
+        }
         //Create sad tests?
     }
 }

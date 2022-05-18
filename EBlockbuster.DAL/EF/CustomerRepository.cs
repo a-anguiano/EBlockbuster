@@ -102,6 +102,36 @@ namespace EBlockbuster.DAL.EF
             return response;
         }
 
+        public Response<Customer> GetCustomerByLoginId(int loginId)
+        {
+            Response<Customer> response = new Response<Customer>();
+
+            try
+            {
+                using (var db = new AppDbContext(Dbco))
+                {
+                    var customer = response.Data = db.Customers.FirstOrDefault(c => c.LoginId == loginId);
+                    if (customer == null)
+                    {
+                        response.Success = false;
+                        response.Message = $"Could not find Customer Login ID: {loginId}";
+                    }
+                    else
+                    {
+                        response.Data = customer;
+                        response.Success = true;
+                        response.Message = $"Customer Email: {loginId}";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                response.Success = false;
+                response.Message = ex.Message;
+            }
+            return response;
+        }
+
         public Response<Customer> Insert(Customer customer)
         {
             Response<Customer> response = new Response<Customer>();

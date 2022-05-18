@@ -21,5 +21,7 @@ namespace EBlockbuster.Core.Interfaces
 
         Response<List<Customer>> GetCustomerByProduct(int productId);
 
+        Response<Customer> GetCustomerByEmail(string email);
+
     }
 }

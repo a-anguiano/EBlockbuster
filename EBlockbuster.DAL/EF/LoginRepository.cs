@@ -150,12 +150,12 @@ namespace EBlockbuster.DAL.EF
                     {
                         response.Data = login;
                         response.Success = true;
-                        response.Message = "Login found";
+                        response.Message = "User Found";
                     }
                     else
                     {
                         response.Success = false;
-                        response.Message = "Login not found";
+                        response.Message = "User Not Found";
                     }
                     return response;
                 }

@@ -13,7 +13,6 @@ namespace EBlockbuster.Models
         [Required(ErrorMessage = "Password is required")]
         [StringLength(15, ErrorMessage = "Password cannot exceed 15 characters")]
         public string Password { get; set; }
-
         public int SecurityLevelId { get; set; }
     }
 }

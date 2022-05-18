@@ -18,5 +18,6 @@ namespace EBlockbuster.Core.Interfaces
         Response<Administrator> Get(int adminId);
 
         Response<List<Administrator>> GetAll();
+        Response<Administrator> GetAdminByLoginId(int loginId);
     }
 }

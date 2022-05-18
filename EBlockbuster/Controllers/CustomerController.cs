@@ -51,7 +51,7 @@ namespace EBlockbuster.Controllers
 
         [HttpGet]
         [Route("/api/[controller]/loginId/{loginId}", Name = "GetCustomerByLoginId")]
-        public IActionResult GetCustomerByLoginIdl(int loginId)
+        public IActionResult GetCustomerByLoginId(int loginId)
         {
             var result = _customerRepo.GetCustomerByLoginId(loginId);
 

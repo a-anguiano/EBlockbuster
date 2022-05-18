@@ -103,6 +103,36 @@ namespace EBlockbuster.DAL.EF
             return response;
         }
 
+        public Response<Administrator> GetAdminByLoginId(int loginId)
+        {
+            Response<Administrator> response = new Response<Administrator>();
+
+            try
+            {
+                using (var db = new AppDbContext(Dbco))
+                {
+                    var admin = response.Data = db.Administrators.FirstOrDefault(c => c.LoginId == loginId);
+                    if (admin == null)
+                    {
+                        response.Success = false;
+                        response.Message = $"Could not find Administrator Login ID: {loginId}";
+                    }
+                    else
+                    {
+                        response.Data = admin;
+                        response.Success = true;
+                        response.Message = $"Administrator Login ID: {loginId}";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                response.Success = false;
+                response.Message = ex.Message;
+            }
+            return response;
+        }
+
         public Response<Administrator> Insert(Administrator administrator)
         {
             Response<Administrator> response = new Response<Administrator>();

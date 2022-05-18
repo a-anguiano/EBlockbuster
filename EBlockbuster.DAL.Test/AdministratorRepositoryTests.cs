@@ -87,6 +87,14 @@ namespace EBlockbuster.DAL.Test
 
         }
 
+        [Test]
+        public void TestGetAdminByLoginId()
+        {
+            var result = db.GetAdminByLoginId(3);
+            Assert.AreEqual(result.Data.FirstName, "Austina");
+            Assert.AreEqual(result.Data.LastName, "Rogerot");
+            Assert.AreEqual(result.Data.AdminId, 3);
+        }
         //Create sad tests?
     }
 }

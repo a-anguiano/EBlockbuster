@@ -33,6 +33,22 @@ namespace EBlockbuster.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("/api/[controller]/loginId/{loginId}", Name = "GetAdminByLoginId")]
+        public IActionResult GetAdminByLoginId(int loginId)
+        {
+            var result = _adminRepo.GetAdminByLoginId(loginId);
+
+            if (result.Success)
+            {
+                return Ok(result.Data);
+            }
+            else
+            {
+                return NotFound(result.Message);
+            }
+        }
+
         [HttpPost]
         public IActionResult InsertAdministrator(AdminModel adminModel)
         {

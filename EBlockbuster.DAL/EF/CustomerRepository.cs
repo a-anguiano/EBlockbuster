@@ -120,7 +120,7 @@ namespace EBlockbuster.DAL.EF
                     {
                         response.Data = customer;
                         response.Success = true;
-                        response.Message = $"Customer Email: {loginId}";
+                        response.Message = $"Customer Login ID: {loginId}";
                     }
                 }
             }

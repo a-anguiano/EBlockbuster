@@ -23,9 +23,8 @@ namespace EBlockbuster.DAL.Test
         public void TestGetTopThreeRentedProducts()
         {
             var result = db.GetTopThreeRentedProducts();
-            Assert.AreEqual("Sel8nne", result.Data[0].ProductTitle);
-            Assert.AreEqual("Riding the Bullet", result.Data[1].ProductTitle);
-            Assert.AreEqual("Deadly Mantis, The", result.Data[2].ProductTitle);
+            Assert.AreEqual("Alien", result.Data[0].ProductTitle);
+            Assert.AreEqual("Ready Player One", result.Data[1].ProductTitle);
             //could test other columns
             //or count
 

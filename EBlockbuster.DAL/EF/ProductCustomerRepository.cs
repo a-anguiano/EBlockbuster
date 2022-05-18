@@ -161,6 +161,7 @@ namespace EBlockbuster.DAL.EF
                 using (var db = new AppDbContext(Dbco))
                 {
                     var productCustomers = db.ProductCustomers
+                        .Include(p => p.Price)
                         .Include(c => c.Customer)
                         .Where(c => c.CustomerId == customerId)
                         .ToList();
@@ -194,6 +195,7 @@ namespace EBlockbuster.DAL.EF
                 using (var db = new AppDbContext(Dbco))
                 {
                     var productCustomers = db.ProductCustomers
+                        .Include(p => p.Price)
                         .Include(c => c.Product)
                         .Where(c => c.ProductId == productId)
                         .ToList();

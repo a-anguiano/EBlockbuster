@@ -48,6 +48,16 @@ namespace EBlockbuster.DAL.Test
         }
 
         [Test]
+        public void TestGetbyEmail()
+        {
+            var result = db.GetCustomerByEmail("fharburtson2@salon.com");
+            Assert.AreEqual(result.Data.FirstName, "Francene");
+            Assert.AreEqual(result.Data.LastName, "Harburtson");
+            Assert.AreEqual(result.Data.Phone, "404-482-8248");
+            Assert.AreEqual(result.Data.CustomerId, 3);
+        }
+
+        [Test]
         public void TestInsert()
         {
             Customer expected = new Customer

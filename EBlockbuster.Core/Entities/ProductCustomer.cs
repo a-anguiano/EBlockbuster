@@ -14,5 +14,7 @@ namespace EBlockbuster.Core.Entities
         public Product Product { get; set; }
         public int CustomerId { get; set; }
         public Customer Customer { get; set; }
+        public int PriceId { get; set; }
+        public Prices Price { get; set; }
     }
 }

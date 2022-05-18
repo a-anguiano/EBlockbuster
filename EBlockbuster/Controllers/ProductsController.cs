@@ -31,7 +31,6 @@ namespace EBlockbuster.Controllers
                 Name = product.Data.Name,
                 Photo = product.Data.Photo,
                 Description = product.Data.Description,
-                PriceId = product.Data.PriceId,
                 CategoryId = product.Data.CategoryId
             });
         }
@@ -51,7 +50,6 @@ namespace EBlockbuster.Controllers
                 Name = p.Name,
                 Photo = p.Photo,
                 Description = p.Description,
-                PriceId= p.PriceId,
                 CategoryId = p.CategoryId
             }));
         }
@@ -71,7 +69,6 @@ namespace EBlockbuster.Controllers
                 Name = p.Name,
                 Photo = p.Photo,
                 Description = p.Description,
-                PriceId = p.PriceId,
                 CategoryId = p.CategoryId
             }));
         }
@@ -86,7 +83,6 @@ namespace EBlockbuster.Controllers
                     Name = product.Name,
                     Photo = product.Photo,
                     Description = product.Description,
-                    PriceId= product.PriceId,
                     CategoryId = product.CategoryId
                 };
 
@@ -117,7 +113,6 @@ namespace EBlockbuster.Controllers
                     Name = product.Name,
                     Photo = product.Photo,
                     Description = product.Description,
-                    PriceId = product.PriceId,
                     CategoryId = product.CategoryId
                 };
 

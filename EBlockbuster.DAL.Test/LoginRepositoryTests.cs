@@ -92,8 +92,16 @@ namespace EBlockbuster.DAL.Test
             Assert.IsFalse(db.Get(16).Success);
         }
 
-       
+       [Test]
+       public void TestGetByUserPass()
+        {
+            Assert.IsTrue(db.GetByUserPass("austinarogerot", "VBzr8jIu7u").Success);
+            Assert.AreEqual(login3.Username, db.GetByUserPass("austinarogerot", "VBzr8jIu7u").Data.Username);
+            Assert.AreEqual(login3.Password, db.GetByUserPass("austinarogerot", "VBzr8jIu7u").Data.Password);
+            Assert.AreEqual(login3.SecurityLevelId, db.GetByUserPass("austinarogerot", "VBzr8jIu7u").Data.SecurityLevelId);
+
         }
+        
 
     }
 }

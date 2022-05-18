@@ -17,7 +17,8 @@ namespace EBlockbuster.Core.Interfaces
 
         Response<Login> Get(int loginId);
 
-        Response<Login> GetByUserPass();
+        Response<Login> GetByUserPass(string username, string password);
+         /*Response<Login> Get(string username, string password);*/
     }
 }
 

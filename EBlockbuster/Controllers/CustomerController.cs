@@ -50,6 +50,22 @@ namespace EBlockbuster.Controllers
         }
 
         [HttpGet]
+        [Route("/api/[controller]/loginId/{loginId}", Name = "GetCustomerByLoginId")]
+        public IActionResult GetCustomerByLoginIdl(int loginId)
+        {
+            var result = _customerRepo.GetCustomerByLoginId(loginId);
+
+            if (result.Success)
+            {
+                return Ok(result.Data);
+            }
+            else
+            {
+                return NotFound(result.Message);
+            }
+        }
+
+        [HttpGet]
         [Route("/api/[controller]/productcustomer/{id}", Name = "GetCustomerByProduct")]
         public IActionResult GetProductByCustomer(int id)
         {

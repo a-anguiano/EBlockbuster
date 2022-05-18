@@ -23,5 +23,7 @@ namespace EBlockbuster.Core.Interfaces
 
         Response<Customer> GetCustomerByEmail(string email);
 
+        Response<Customer> GetCustomerByLoginId (int loginId);
+
     }
 }

@@ -138,9 +138,35 @@ namespace EBlockbuster.DAL.EF
                 return response;
             }
         }
-        public Response<Login> GetByUserPass()
+        public Response<Login> GetByUserPass(string username, string password)
         {
-            throw new NotImplementedException();
+            Response<Login> response = new Response<Login>();
+            try
+            {
+                using (var db = new AppDbContext(Dbco))
+                {
+                    var login = db.Logins.FirstOrDefault(l => l.Username == username  && l.Password == password);
+                    if (login != null)
+                    {
+                        response.Data = login;
+                        response.Success = true;
+                        response.Message = "Login found";
+                    }
+                    else
+                    {
+                        response.Success = false;
+                        response.Message = "Login not found";
+                    }
+                    return response;
+                }
+            }
+            catch (Exception ex)
+            {
+                response.Success = false;
+                response.Message = ex.Message;
+            }
+            return response;
+
         }
 
 

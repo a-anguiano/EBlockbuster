@@ -121,5 +121,22 @@ namespace EBlockbuster.Controllers
                 return BadRequest(result.Message);
             }
         }
+
+        [HttpGet]
+        [Route("/api/[controller]/{username}/{password}")]
+        public IActionResult GetByUserPass(string username, string password)
+        {
+            var login = _loginRepository.GetByUserPass(username, password);
+
+            if (login.Success)
+            {
+                return Ok(login.Data);
+            }
+            else
+            {
+                return NotFound(login.Message);
+            }
+        }
+      
     }
 }

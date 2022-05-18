@@ -72,6 +72,36 @@ namespace EBlockbuster.DAL.EF
             return response;
         }
 
+        public Response<Customer> GetCustomerByEmail(string email)
+        {
+            Response<Customer> response = new Response<Customer>();
+
+            try
+            {
+                using (var db = new AppDbContext(Dbco))
+                {
+                    var customer = response.Data = db.Customers.FirstOrDefault(c => c.Email == email);
+                    if (customer == null)
+                    {
+                        response.Success = false;
+                        response.Message = $"Could not find Customer Email: {email}";
+                    }
+                    else
+                    {
+                        response.Data = customer;
+                        response.Success = true;
+                        response.Message = $"Customer Email: {email}";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                response.Success = false;
+                response.Message = ex.Message;
+            }
+            return response;
+        }
+
         public Response<Customer> Insert(Customer customer)
         {
             Response<Customer> response = new Response<Customer>();

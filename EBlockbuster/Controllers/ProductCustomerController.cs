@@ -28,7 +28,9 @@ namespace EBlockbuster.Controllers
             return Ok(customer.Data.Select(p => new ProductCustomerModel()
             {
                 ProductId = p.ProductId,
-                CustomerId = p.CustomerId
+                CustomerId = p.CustomerId,
+                PriceId = p.PriceId,
+                Price = p.Price.Price,
             }));
         }
 
@@ -40,7 +42,8 @@ namespace EBlockbuster.Controllers
                 ProductCustomer newProductCustomer = new ProductCustomer()
                 {
                     ProductId = productCustomer.ProductId,
-                    CustomerId = productCustomer.CustomerId
+                    CustomerId = productCustomer.CustomerId,
+                    PriceId = productCustomer.PriceId
                 };
 
                 var result = _productCustomerRepository.Insert(newProductCustomer);

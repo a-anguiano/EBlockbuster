@@ -15,7 +15,7 @@ namespace EBlockbuster.DAL
         public DbSet<ProductCustomer> ProductCustomers { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<SecurityLevel> SecurityLevel { get; set; }
-
+        public DbSet<Prices> Prices { get; set; }
 
         public AppDbContext() : base()
         {

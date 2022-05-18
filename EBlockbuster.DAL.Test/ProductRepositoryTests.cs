@@ -33,7 +33,6 @@ namespace EBlockbuster.DAL.Test
         public void TestGet()
         {
             Assert.AreEqual(product.Name, db.Get(10).Data.Name);
-            Assert.AreEqual(product.Description, db.Get(10).Data.Description);
         }
 
         [Test]
@@ -50,8 +49,7 @@ namespace EBlockbuster.DAL.Test
                 Name = "New Product",
                 Photo = "PlaceHolderLinkToPicture",
                 Description = "New Product",
-                CategoryId = 1,
-                PriceId = 1
+                CategoryId = 1
             };
 
             var add = db.Insert(newProduct);
@@ -69,8 +67,7 @@ namespace EBlockbuster.DAL.Test
                 Name = "Updated Product",
                 Photo = "Updated PlaceHolderLinkToPicture",
                 Description = "Updated Product",
-                CategoryId = 6,
-                PriceId = 1
+                CategoryId = 6
             };
 
             var update = db.Update(newProduct);

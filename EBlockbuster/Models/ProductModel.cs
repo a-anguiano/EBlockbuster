@@ -13,7 +13,6 @@ namespace EBlockbuster.Models
         [Required(ErrorMessage = "Description is required")]
         [StringLength(250, ErrorMessage = "Description cannot exceed 50 characters")]
         public string Description { get; set; }
-        public int PriceId { get; set; }
         public int CategoryId { get; set; }
     }
 }

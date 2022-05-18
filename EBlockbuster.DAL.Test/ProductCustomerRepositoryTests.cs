@@ -54,7 +54,8 @@ namespace EBlockbuster.DAL.Test
             ProductCustomer productCustomer = new ProductCustomer
             {
                 ProductId = 7,
-                CustomerId = 1
+                CustomerId = 1,
+                PriceId = 1
             };
 
             var add = db.Insert(productCustomer);
@@ -67,8 +68,9 @@ namespace EBlockbuster.DAL.Test
         {
             ProductCustomer productCustomer = new ProductCustomer
             {
-                ProductId = 1,
-                CustomerId = 5
+                ProductId = 10,
+                CustomerId = 1,
+                PriceId = 2
             };
             var update = db.Update(productCustomer);
             Assert.IsTrue(update.Success);

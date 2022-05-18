@@ -34,6 +34,22 @@ namespace EBlockbuster.Controllers
         }
 
         [HttpGet]
+        [Route("/api/[controller]/email/{email}", Name = "GetCustomerByEmail")]
+        public IActionResult GetCustomerByEmail(string email)
+        {
+            var result = _customerRepo.GetCustomerByEmail(email);
+
+            if (result.Success)
+            {
+                return Ok(result.Data);
+            }
+            else
+            {
+                return NotFound(result.Message);
+            }
+        }
+
+        [HttpGet]
         [Route("/api/[controller]/productcustomer/{id}", Name = "GetCustomerByProduct")]
         public IActionResult GetProductByCustomer(int id)
         {

@@ -72,7 +72,7 @@ namespace EBlockbuster.DAL.EF
             return response;
         }
 
-        public Response<Customer> GetCustomerByEmail(string email)
+        public Response<Customer> GetCustomerByLogin(int loginId)
         {
             Response<Customer> response = new Response<Customer>();
 

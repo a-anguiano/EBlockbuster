@@ -55,7 +55,9 @@ namespace EBlockbuster.Controllers
                 {
                     Token = tokenString,
                     LoginId = userObj.Data.LoginId,
-                    SecurityLevelId = userObj.Data.SecurityLevelId
+                    SecurityLevelId = userObj.Data.SecurityLevelId,
+                    Username = userObj.Data.Username,
+                    Password = userObj.Data.Password
                 });
             }
             else
